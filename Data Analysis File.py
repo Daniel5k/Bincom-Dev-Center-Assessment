@@ -1,3 +1,5 @@
+import psycopg2
+
 Monday = "GREEN, YELLOW, GREEN, BROWN, BLUE, PINK, BLUE, YELLOW, ORANGE, CREAM, ORANGE, RED, WHITE, BLUE, WHITE, BLUE, BLUE, BLUE, GREEN,"
 
 Tuesday = "ARSH, BROWN, GREEN, BROWN, BLUE, BLUE, BLEW, PINK, PINK, ORANGE, ORANGE, RED, WHITE, BLUE, WHITE, WHITE, BLUE, BLUE, BLUE,"
@@ -41,6 +43,17 @@ def theMostColour():
         }
         colour_with_itsNumberDict.append(Each_colour_values)
     colour_Dict_Flatten = {key: value for data in colour_with_itsNumberDict for key, value in data.items() }
+    # with psycopg2.connect(
+    #     host = 'localhost',
+    #     database = 'BincomDevAssessment',
+    #     user= 'daniel',
+    #     password = 'myPassword'
+    # ) as connection:
+    #     with connection.cursor() as indicator:
+    #         for key, value in colour_Dict_Flatten.items():
+    #             indicator.execute(
+    #                 "INSERT INTO Colours "
+    #             )
     highest_value = max(colour_Dict_Flatten, key=colour_Dict_Flatten.get)
     print(f"{highest_value} with a value of {colour_Dict_Flatten[highest_value]} is the highest value")
     
